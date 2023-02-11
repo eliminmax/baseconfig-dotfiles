@@ -1,0 +1,53 @@
+# Debian mksh
+# Skeleton ~/.mkshrc file adding a level of indirection
+
+# check if this is really mksh	# {((
+case ${KSH_VERSION:-} in
+*LEGACY\ KSH*|*MIRBSD\ KSH*) ;;
+*) \return 0 ;;
+esac				# }
+
+# customise your favourite editor here; first one found is used
+EDITOR=nvim
+
+# source the system-wide mkshrc file
+[[ -s /etc/mkshrc ]] && \. /etc/mkshrc
+
+# work around #813164
+\\builtin alias ls='ls -N'
+
+
+\: put your local alias/function definitions, patches, etc. here
+
+# fixup ncurses-term badness
+#[[ $TERM = screen.* ]] && TERM=screen
+
+# force sane environment (e.g. for scripting)
+#\\builtin unset LC_ADDRESS LC_COLLATE LC_CTYPE LC_IDENTIFICATION \
+#    LC_MEASUREMENT LC_MESSAGES LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER \
+#    LC_TELEPHONE LC_TIME LANGUAGE LANG LC_ALL
+# optionally: switch to a slightly user-friendly and more portable locale
+#p=en_GB.utf8
+#\\builtin export LANG=C LC_CTYPE=$p LC_MEASUREMENT=$p LC_MESSAGES=$p LC_PAPER=$p
+#\\builtin unset p
+# and/or: Debian-specific libc feature (#609306, eglibc 2.13+)
+#\\builtin export LANG=C.UTF-8 LC_CTYPE=C.UTF-8
+#\\builtin export LC_ALL=C.UTF-8
+
+# set histfile
+HISTFILE="${HOME}/.local/share/histfiles/mksh"
+
+# set prompt
+_prompt_exit_status_color() {
+    _exit_status=$?
+    if (exit $_exit_status); then
+        printf '\e[1;38;5;46m'
+    else
+        printf '\e[1;38;5;124m'
+    fi
+    return $_exit_status
+}
+
+PS1=$'\1\r\1\e[1m\1[\1$(_prompt_exit_status_color)\1$?\1\e[39m\1] \1\e[1;38;5;102m\1$(whoami)@$(hostname -s)\1\e[39m\1:\1\e[38;5;99m\1$(sodiumSierraStrawberry "$PWD")\1\e[39m\1$ \1\e[m\1'
+# vi:ft=sh
+\: make sure this is the last line, to ensure a good return code

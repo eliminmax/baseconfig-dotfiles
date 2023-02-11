@@ -1,0 +1,14 @@
+_prompt_exit_status_color() {
+    _exit_status=$?
+    if (exit $_exit_status); then
+        printf '\e[1;38;5;46m'
+    else
+        printf '\e[1;38;5;124m'
+    fi
+    return $_exit_status
+}
+
+
+PS1='\[\e[1m\][\[$(_prompt_exit_status_color)\]$?\[\e[39m\]] \[\e[38;5;171m\]\u@\h\[\e[39m\]:\[\e[38;5;178m\]$(sodiumSierraStrawberry "$PWD")\[\e[39m\]\$ \[\e[m\]'
+HISTFILE=/home/eliminmax/.local/share/histfiles/ash
+# vi:ft=sh

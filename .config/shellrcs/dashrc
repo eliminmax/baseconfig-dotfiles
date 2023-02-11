@@ -1,0 +1,13 @@
+_prompt_exit_status_color() {
+    _exit_status=$?
+    if (exit $_exit_status); then
+        printf '\e[1;38;5;46m'
+    else
+        printf '\e[1;38;5;124m'
+    fi
+    return $_exit_status
+}
+
+PS1='[1m[$(_prompt_exit_status_color)$?[39m] [1;38;5;161m$(whoami)@$(hostname -s)[39m:[38;5;250m$(sodiumSierraStrawberry "$PWD")[39m\$ [0m'
+
+# vi:ft=sh

@@ -1,0 +1,19 @@
+# Do not look above this directory
+root = true
+
+# Common to all file types
+[*]
+# spaces over tabs every time
+indent = space
+# unix-stylr line endings
+end_of_line = lf
+# I prefer 4-long tabs in most contexts
+tab_width = 4
+# Unicode‽ In my files‽ Y̸̯̪̜̫̱͔͎̑͋̎̐̈́̕͝Ẽ̷̞͔͕̝̯͔͍̼͊͜S̵̢̡̝̮͓͇̪͎͋̍͐̌̐͠!̸̪̠̒̔͊͐͆́̾̏̊̇!̶͓̺̯̟̺͍̦̫̣͇̈́̂̿̽̍̉͌̀̚
+charset = utf-8
+# No trailing whitespace!
+trim_trailing_whitespace = true
+
+
+[*.{md,yaml,yml}]
+tab_width = 2

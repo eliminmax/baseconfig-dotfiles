@@ -1,0 +1,35 @@
+[user]
+	name = Eli Array Minkoff
+	email = eli@earrayminkoff.tech
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[init]
+	defaultBranch = main
+
+[pull]
+    rebase = false
+
+[core]
+    pager = delta
+	editor = /usr/bin/nvim
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+	tool = vimdiff
+[mergetool]
+	prompt = false

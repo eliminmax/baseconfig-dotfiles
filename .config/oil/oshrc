@@ -1,0 +1,70 @@
+# vi: ft=sh
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+    ;;
+*)
+    ;;
+esac
+
+# function to set color of exit status
+_prompt_exit_status_color() {
+    _exit_status=$?
+    if (exit $_exit_status); then
+        printf '\e[1;38;5;46m'
+    else
+        printf '\e[1;38;5;124m'
+    fi
+    return $_exit_status
+}
+
+# if config file exists, use sodiumSierraStrawberry for the path in the prompt
+if [ -f "$HOME/.config/sodiumSierraStrawberry/config.json" ]; then
+    PS1='\[\e[1m\][\[$(_prompt_exit_status_color)\]$?\[\e[39m\]] \[\e[1;38;5;220m\]\u@\h\[\e[1;39m\]:\[\e[1;38;5;196m\]$(sodiumSierraStrawberry "$PWD")\[\e[1;39m\]\$ \[\e[0m\]'
+else
+    PS1='\[\e[1m\][\[$(_prompt_exit_status_color)\]$?\[\e[39m\]] \[\e[1;38;5;220m\]\u@\h\[\e[1;39m\]:\[\e[1;38;5;196m\]\W\[\e[1;39m\]\$ \[\e[0m\]'
+fi
+# Change $TERM to xterm-256 if it's just xterm
+if [[ $TERM == 'xterm' ]]; then
+    export TERM='xterm-256color'
+fi
+
+# don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# set the default editor to vim
+export EDITOR=/usr/bin/vim
+
+# Set TERM variable
+if [ ! -z "$TERMCAP" ] && [ "$TERM" == "screen" ]; then
+    export TERMCAP=$(echo $TERMCAP | sed -e 's/Co#8/Co#256/g')
+fi
+
+# source common aliases
+if [ -f "${HOME}/.config/common_aliases" ]; then
+    source "${HOME}/.config/common_aliases"
+fi

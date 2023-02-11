@@ -1,0 +1,24 @@
+# vi: ft=sh
+# set histfile
+HISTFILE="${HOME}/.local/share/histfiles/yash"
+
+# use emacs-style line editing
+set -o emacs
+
+# Source common aliases
+if [ -f "${HOME}/.config/common_aliases" ]; then
+    . "${HOME}/.config/common_aliases"
+fi
+
+_prompt_exit_status_color() {
+    _exit_status=$?
+    if (exit $_exit_status); then
+        printf '\e[1;38;5;46m'
+    else
+        printf '\e[1;38;5;124m'
+    fi
+    return $_exit_status
+}
+
+# set prompt
+PS1='$(printf "\[\e[0;1m\][\[%s\]%s\[\e[39m\]] \[\e[38;5;172m\]" "$(_prompt_exit_status_color)" $?)$(whoami)@$(hostname -s)$(printf "\[\e[1;39m\]"):$(printf "\[\e[1;38;5;147m\]")$(sodiumSierraStrawberry "$(pwd)")$(printf "\[\e[1;39m\]")\$ $(printf "\[\e[0m\]")'

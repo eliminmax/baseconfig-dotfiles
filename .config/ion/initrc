@@ -1,0 +1,15 @@
+fn PROMPT
+    let _exit_status = $?
+    let _exit_color = ''
+    if test $_exit_status == '0'
+        let _exit_color = "${c::46}"
+    else
+        let _exit_color =  "${c::124}"
+    end
+    printf "${c::bold}[${_exit_color}${_exit_status}${c::reset}${c::bold}] ${c::bold}${c::37}${USER}\@%s${c::reset}${c::bold}:${c::173}%s${c::reset}${c::bold}≠ ${c::reset}" $(hostname -s) $(sodiumSierraStrawberry $PWD)
+end
+
+
+let HISTFILE = "~/.local/share/histfiles/ion"
+
+source "~/.config/portable_aliases"

@@ -1,0 +1,14 @@
+# history file
+set histfile="${HOME}/.local/share/histfiles/tcsh"
+set savehist=1000
+# prompty stuff
+set      bold_text="%{\e[0;1m%}"
+set    error_color="%{\e[38;5;124m%}"
+set no_error_color="%{\e[38;5;46m%}"
+set hostname_color="%{\e[38;5;118m%}"
+set  dirname_color="%{\e[38;5;169m%}"
+set    clear_color="%{\e[39m%}"
+set            end="%{\e[m%}"
+alias precmd 'set _old_status="$status"; [ $_old_status == 0 ] && set exit_color="${no_error_color}" || set exit_color="${error_color}"; set prompt="${bold_text}[${exit_color}${_old_status}${clear_color}] ${hostname_color}%n@%m${clear_color}:${dirname_color}\`sodiumSierraStrawberry ${PWD}\`${clear_color}×${end} "; (exit $_old_status)'
+# portable aliases
+tr = \  <"${HOME}/.config/portable_aliases" | source /dev/stdin

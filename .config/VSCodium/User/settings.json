@@ -1,0 +1,26 @@
+{
+  "editor.fontFamily": "'UbuntuMono Nerd Font Mono'",
+    "markdown.preview.fontFamily": "'Ubuntu'",
+    "terminal.integrated.fontSize": 16,
+    "vscode-neovim.neovimExecutablePaths.linux": "/home/eliminmax/.local/libexec/vscode-nvim/squashfs-root/usr/bin/nvim",
+    "vscode-neovim.neovimWidth": 120,
+    "vscode-neovim.neovimInitVimPaths.linux": "/home/eliminmax/.config/nvim/init.vim",
+    "vscode-neovim.mouseSelectionStartVisualMode": true,
+    "gitlens.defaultDateFormat": null,
+    "gitlens.hovers.currentLine.over": "line",
+    "vscode-neovim.revealCursorScrollLine": true,
+    "workbench.tips.enabled": false,
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "workbench.startupEditor": "none",
+    "vscode-neovim.useCtrlKeysForNormalMode": false,
+    "vscode-neovim.useCtrlKeysForInsertMode": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "update.mode": "none",
+    "scm.alwaysShowActions": true,
+    "scm.diffDecorationsGutterPattern": {
+      "added": true
+    },
+    "editor.fontSize": 12,
+    "editor.accessibilitySupport": "off",
+    "window.zoomLevel": 1
+}

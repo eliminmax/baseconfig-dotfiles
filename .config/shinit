@@ -1,0 +1,37 @@
+#!/bin/sh
+# Call shell-specific rc scripts in interactive sessions
+case $- in
+    *i*)
+        . "$XDG_CONFIG_HOME/common_aliases"
+        case "$(basename "$0")" in
+            sh)
+                if [ -f "$XDG_CONFIG_HOME/shellrcs/shrc" ]; then
+                   . "$XDG_CONFIG_HOME/shellrcs/shrc"
+                fi
+                ;;
+            dash)
+                if [ -f "$XDG_CONFIG_HOME/shellrcs/dashrc" ]; then
+                   . "$XDG_CONFIG_HOME/shellrcs/dashrc"
+                fi
+                ;;
+            ash)
+                if [ -f "$XDG_CONFIG_HOME/shellrcs/ashrc" ]; then
+                   . "$XDG_CONFIG_HOME/shellrcs/ashrc"
+                fi
+                ;;
+            ksh|ksh93)
+                if [ -f "$XDG_CONFIG_HOME/shellrcs/kshrc" ]; then
+                    . "$XDG_CONFIG_HOME/shellrcs/kshrc"
+                fi
+            ;;
+            mksh|lksh|mksh-static)
+                if [ -f "$XDG_CONFIG_HOME/shellrcs/mkshrc" ]; then
+                    . "$XDG_CONFIG_HOME/shellrcs/mkshrc"
+                fi
+            ;;
+        esac
+        if [ -f "$XDG_CONFIG_HOME/config/common_aliases" ]; then
+            . "$XDG_CONFIG_HOME/config/common_aliases"
+        fi
+    ;;
+esac

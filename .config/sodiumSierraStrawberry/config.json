@@ -1,0 +1,18 @@
+[
+    ["/", "/"],
+    ["/home/eliminmax", "~"],
+    ["/home/eliminmax/.config", "~/.config"],
+    ["/home/eliminmax/Containers","~/Containers"],
+    ["/home/eliminmax/Desktop", "~/Desktop"],
+    ["/home/eliminmax/Documents","~/Documents"],
+    ["/home/eliminmax/Downloads","~/Downloads"],
+    ["/home/eliminmax/Games","~/Games"],
+    ["/home/eliminmax/Git","~/Git"],
+    ["/home/eliminmax/Music","~/Music"],
+    ["/home/eliminmax/Pictures","~/Pictures"],
+    ["/home/eliminmax/Shares","~/Shares"],
+    ["/home/eliminmax/Sources","~/Sources"],
+    ["/home/eliminmax/Sync", "~/Sync"],
+    ["/home/eliminmax/VMs", "~/VMs"],
+    ["/home/eliminmax/Videos", "~/Videos"]
+]
