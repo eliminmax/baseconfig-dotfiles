@@ -7,7 +7,7 @@ function global:prompt {
     $global:LASTEXITCODE = $exitcode
     return " " # needs to be a non-empty string, or else it defaults to 'PS>'
 }
-Set-UnixCompleter -ShellType bash
+# Set-UnixCompleter -ShellType bash
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineOption -HistorySavePath "$HOME/.local/share/histfiles/pwsh"
 Set-PSReadLineOption -Colors @{
